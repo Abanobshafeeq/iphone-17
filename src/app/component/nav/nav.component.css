@@ -1,0 +1,39 @@
+.c-navbar {
+  height: 44px;
+}
+
+.c-container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto !important; /* بدل الأرقام الغلط */
+  padding: 0 22px;
+}
+
+/* UL */
+.nav {
+  width: 100%;               /* أهم سطر */
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* links */
+.nav-link {
+  font-size: 12px;
+  color: #000;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #000;
+}
+
+.navbar-brand {
+  font-size: 18px;
+  padding: 0;
+}
