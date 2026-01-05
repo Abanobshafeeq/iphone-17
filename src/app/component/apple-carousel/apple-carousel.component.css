@@ -1,0 +1,229 @@
+.carousel-wrapper {
+  width: 100%;
+  padding: 40px 0;
+  overflow: hidden;
+  font-family: var(--font-system);
+}
+
+.carousel-viewport {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.slides-list {
+  display: flex;
+  list-style: none;
+  padding: 0 15%; 
+  margin: 0;
+  gap: 20px;
+}
+
+.card-item, .card-item-3 {
+  flex: 0 0 75vw;
+  scroll-snap-align: center;
+  background: white;
+  border-radius: 28px;
+  height: 600px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 40px 0px 40px;
+}
+
+/* Updated Grid Layout for Slide 3 to match your reference image */
+.card-item-3 {
+  display: grid;
+  grid-template-columns: 60% 40%; /* Image 60%, Text 40% */
+  align-items: center;
+  padding: 0; 
+}
+
+.text-content-1, .text-content-2, .text-content-3, .text-content {
+  color: #1d1d1f;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: 0.007em;
+}
+
+.text-content-1, .text-content {
+  width: 100%;
+  max-width: 480px;
+}
+
+.text-content-2 {
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.text-content-3 {
+  padding: 80PX 40px;
+  text-align: left;
+  display: flex;
+    flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+}
+
+/* Image 3 area matches the blue highlight in your photo */
+.image-container-3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Aligns phone to bottom like Apple's site */
+}
+
+.img-4 img{
+    
+    max-height: 100% !important;
+}
+.img-5 img{
+    
+    max-height: 100% !important;
+}
+.image-container img {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+}
+
+.image-container-3 img {
+  max-width: auto;
+  max-height: 510px;
+  
+}
+/* Special container for the AI card to center everything */
+.ai-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px 0 0 0 !important; /* Space for top text */
+  background-color: #ffffff;
+}
+
+/* Centered Text Layout */
+.text-content-center {
+  text-align: center;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.ai-title {
+  background: linear-gradient(90deg, #1e90ff, #ff1493, #ffa500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.text-content-center p {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+}
+
+.ai-subtitle {
+  font-size: 17px;
+  color: #86868b;
+  font-weight: 400;
+}
+
+/* Image at the bottom edge */
+.image-container-bottom {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Pushes the hand to the bottom edge */
+
+  overflow: hidden;
+  line-height: 0;
+}
+
+.image-container-bottom img {
+  max-height: 130% !important; /* Adjust based on your image height */
+  width: auto;
+ 
+}
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.indicators-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #e8e8ed;
+  padding: 10px 18px;
+  border-radius: 20px;
+  list-style: none;
+  margin: 0;
+}
+
+.dot-item {
+  width: 8px;
+  height: 8px;
+  background: #86868b;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot-item.active {
+  background: #1d1d1f;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.play-pause-btn {
+  background: #e8e8ed;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .card-item-3 {
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr;
+    padding: 30px;
+  }
+  .card-item, .card-item-3 { height: 500px; }
+  .text-content-3 { padding: 0; order: 1; text-align: center; font-size: 22px; }
+  .image-container-3 { order: 2; }
+}

@@ -1,0 +1,96 @@
+<div class="carousel-wrapper">
+  <div class="carousel-viewport" #viewport>
+    <ul class="slides-list">
+      <li class="card-item">
+        <div class="text-content-1">
+          <p>
+            Brighter display, now with ProMotion up to 120Hz. Durable Ceramic
+            Shield 2 front with 3x better scratch resistance.1
+          </p>
+        </div>
+        <div class="image-container">
+          <img src="assets/images/carousel/1.jpg" alt="Display" />
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="text-content-2">
+          <p>
+            New Center Stage front camera. Flexible ways to frame your shot.
+            Smarter group selfies. And so much more.
+          </p>
+        </div>
+        <div class="image-container">
+          <img src="assets/images/carousel/2.jpg" alt="Camera" />
+        </div>
+      </li>
+
+      <li class="card-item-3">
+        <div class="image-container-3">
+          <img src="assets/images/carousel/3.png" alt="Dual Camera" />
+        </div>
+        <div class="text-content-3">
+          <p>
+            48MP Dual Fusion camera system. Superstunning shots up close and far
+            away.
+          </p>
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="text-content-2">
+          <p>
+            A19 chip. All-day battery life.2 Powers everything you love about
+            iPhone.
+          </p>
+        </div>
+        <div class="image-container img-4">
+          <img src="assets/images/carousel/4.jpg" alt="Chip" />
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="text-content-2">
+          <p>iOS 26. New look.</p>
+          <p>Even more magic.</p>
+        </div>
+        <div class="image-container-3 img-5">
+          <img src="assets/images/carousel/5.png" alt="iOS" />
+        </div>
+      </li>
+
+      <li class="card-item ai-card">
+        <div class="text-content-center">
+          <p>
+            <span class="ai-title">Apple Intelligence.</span><br />
+            Effortlessly helpful features — from image creation to Live
+            Translation.<sup>3,4</sup>
+          </p>
+          <span class="ai-subtitle">Available in select languages</span>
+        </div>
+        <div class="image-container-bottom image-container-3">
+          <img
+            src="assets/images/carousel/6.jpg"
+            alt="Apple Intelligence Handheld"
+          />
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="controls">
+    <ul class="indicators-list">
+      @for (slide of slides; track $index) {
+      <li
+        class="dot-item"
+        [class.active]="currentIndex() === $index"
+        (click)="goTo($index)"
+      ></li>
+      }
+    </ul>
+
+    <button class="play-pause-btn" (click)="togglePlay()">
+      <span>{{ isPlaying() ? "||" : "▶" }}</span>
+    </button>
+  </div>
+</div>
