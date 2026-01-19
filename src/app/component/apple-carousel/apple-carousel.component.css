@@ -1,17 +1,47 @@
 .carousel-wrapper {
   width: 100%;
   padding: 40px 0;
-  overflow: hidden;
-  font-family: var(--font-system);
+  overflow: clip;
+  font-family: var(
+    --font-system,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif
+  );
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.title {
+  grid-row: 1;
+  width: 100%;
+  margin: 0;
+  padding-left: 15%;
+  box-sizing: border-box;
+}
+
+.title h1 {
+  font-size: 56px !important;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  padding-bottom: 60px;
 }
 
 .carousel-viewport {
+  grid-row: 2;
+  grid-column: 1;
   width: 100%;
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  padding-bottom: 80px;
 }
 
 .carousel-viewport::-webkit-scrollbar {
@@ -21,12 +51,14 @@
 .slides-list {
   display: flex;
   list-style: none;
-  padding: 0 15%; 
+  padding: 0 15%;
   margin: 0;
   gap: 20px;
 }
 
-.card-item, .card-item-3 {
+.card-item,
+.card-item-3 {
+  position: relative;
   flex: 0 0 75vw;
   scroll-snap-align: center;
   background: white;
@@ -34,112 +66,112 @@
   height: 600px;
   box-sizing: border-box;
   overflow: hidden;
-}
-
-.card-item {
   display: flex;
   flex-direction: column;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-item:has(.video-bg) .text-content-1,
+.card-item:has(.video-bg) .text-content-2 {
+  position: relative;
+  z-index: 1;
+}
+
+.card-item-3 {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: center;
+  padding: 0;
+  flex-direction: row;
+}
+
+.card-item-3 .image-container-3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.card-item-3 .image-container-3 img {
+  max-width: auto;
+  max-height: 510px;
+}
+
+.card-item.img-5-wrapper {
   padding: 40px 40px 0px 40px;
 }
 
-/* Updated Grid Layout for Slide 3 to match your reference image */
-.card-item-3 {
-  display: grid;
-  grid-template-columns: 60% 40%; /* Image 60%, Text 40% */
-  align-items: center;
-  padding: 0; 
-}
-
-.text-content-1, .text-content-2, .text-content-3, .text-content {
-  color: #1d1d1f;
-  font-size: 28px;
-  line-height: 1.15;
-  font-weight: 600;
-  letter-spacing: 0.007em;
-}
-
-.text-content-1, .text-content {
+.img-5-wrapper .image-container-3 {
   width: 100%;
-  max-width: 480px;
-}
-
-.text-content-2 {
-  width: 100%;
-  max-width: 550px;
-  text-align: center;
-  margin: 0 auto;
-  padding-bottom: 20px;
-}
-
-.text-content-3 {
-  padding: 80PX 40px;
-  text-align: left;
-  display: flex;
-    flex-direction: column;
-  align-items: flex-start;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 1;
 }
 
-.image-container {
+.img-5-wrapper .image-container-3 img {
+  max-width: auto;
+  max-height: 510px;
+}
+
+.ai-card {
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px !important;
+}
+
+.image-container-bottom {
+  width: 100%;
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 0;
+  align-items: flex-end;
+  overflow: hidden;
+  line-height: 0;
 }
 
-/* Image 3 area matches the blue highlight in your photo */
-.image-container-3 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Aligns phone to bottom like Apple's site */
+.image-container-bottom img {
+  max-height: 130% !important;
+  width: auto;
 }
 
-.img-4 img{
-    
-    max-height: 100% !important;
-}
-.img-5 img{
-    
-    max-height: 100% !important;
-}
-.image-container img {
-  max-width: 90%;
-  max-height: 85%;
-  object-fit: contain;
-}
-
-.image-container-3 img {
-  max-width: auto;
-  max-height: 510px;
-  
-}
-/* Special container for the AI card to center everything */
-.ai-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 60px 0 0 0 !important; /* Space for top text */
-  background-color: #ffffff;
-}
-
-/* Centered Text Layout */
+.text-content-1,
+.text-content-2,
+.text-content-3,
 .text-content-center {
-  text-align: center;
-  max-width: 600px;
-  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.ai-title {
-  background: linear-gradient(90deg, #1e90ff, #ff1493, #ffa500);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
+.text-content-3 p {
+  max-width: 22ch;
 }
 
+
+
+.text-content-1.text-center{
+  margin: 20px auto !important;
+}
+.text-content-center{
+  max-width: 550px;
+}
 .text-content-center p {
   font-size: 28px;
   line-height: 1.2;
@@ -154,40 +186,46 @@
   font-weight: 400;
 }
 
-/* Image at the bottom edge */
-.image-container-bottom {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Pushes the hand to the bottom edge */
-
-  overflow: hidden;
-  line-height: 0;
+.card-item-3.active-slide .slide-up-target img {
+  animation: slideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-.image-container-bottom img {
-  max-height: 130% !important; /* Adjust based on your image height */
-  width: auto;
- 
+.card-item.img-5-wrapper.active-slide .zoom-out-target img {
+  animation: zoomOut 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
+
 .controls {
+  grid-row: 2;
+  grid-column: 1;
+  align-self: end;
+  justify-self: center;
+  position: sticky;
+  bottom: 30px;
+  z-index: 50;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  margin-top: 30px;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.indicators-list,
+.play-pause-btn {
+  pointer-events: auto;
+  backdrop-filter: blur(20px);
+  background-color: rgba(232, 232, 237, 0.8);
 }
 
 .indicators-list {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #e8e8ed;
-  padding: 10px 18px;
-  border-radius: 20px;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 32px;
   list-style: none;
   margin: 0;
+  height: 45px;
+  box-sizing: border-box;
 }
 
 .dot-item {
@@ -196,34 +234,163 @@
   background: #86868b;
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .dot-item.active {
-  background: #1d1d1f;
-  width: 24px;
+  width: 40px;
   border-radius: 4px;
+  background: #86868b;
+}
+
+.dot-item.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #1d1d1f;
+  border-radius: 4px;
+  animation: progress-fill 8s linear forwards;
+}
+
+.indicators-list.paused .dot-item.active::after {
+  animation-play-state: paused;
 }
 
 .play-pause-btn {
-  background: #e8e8ed;
   border: none;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 16px;
+  color: #1d1d1f;
+  transition: background 0.2s;
+}
+
+.play-pause-btn:hover {
+  background: #d2d2d7;
+}
+
+@media (max-width: 1024px) {
+  .title {
+    padding-left: 5%;
+  }
+
+  .slides-list {
+    padding: 0 5%;
+  }
+
+  .card-item,
+  .card-item-3 {
+    flex: 0 0 85vw;
+  }
 }
 
 @media (max-width: 768px) {
-  .card-item-3 {
-    grid-template-columns: 100%;
-    grid-template-rows: auto 1fr;
-    padding: 30px;
+  .carousel-wrapper {
+    padding: 20px 0;
   }
-  .card-item, .card-item-3 { height: 500px; }
-  .text-content-3 { padding: 0; order: 1; text-align: center; font-size: 22px; }
-  .image-container-3 { order: 2; }
+
+  .title h1 {
+    font-size: 32px !important;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .slides-list {
+    padding: 0 5%;
+    gap: 15px;
+  }
+
+  .card-item,
+  .card-item-3 {
+    height: 520px;
+    flex: 0 0 90vw;
+    border-radius: 20px;
+  }
+
+  .text-content-1 p,
+  .text-content-2 p,
+  .text-content-3 p,
+  .text-content-center p {
+    font-size: 20px;
+  }
+
+  .text-content-1,
+  .text-content-2 {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  .card-item-3 {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .card-item-3 .text-content-3 {
+    padding: 30px 20px 10px 20px;
+    order: 1;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .card-item-3 .image-container-3 {
+    order: 2;
+    width: 100%;
+    height: auto;
+    flex: 1;
+    align-items: flex-end;
+  }
+
+  .card-item-3 .image-container-3 img {
+    max-height: 280px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .text-content-3 p {
+    max-width: 100%;
+  }
+
+  .card-item.img-5-wrapper {
+    padding: 30px 20px 0 20px;
+  }
+
+  .img-5-wrapper .image-container-3 img {
+    max-height: 300px;
+  }
+
+  .ai-card {
+    padding-top: 40px !important;
+  }
+
+  .ai-subtitle {
+    font-size: 14px;
+  }
+
+  .image-container-bottom img {
+    max-height: 100% !important;
+  }
+
+  .controls {
+    bottom: 20px;
+  }
+
+  .play-pause-btn {
+    width: 40px;
+    height: 40px;
+  }
 }
+

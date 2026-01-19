@@ -1,35 +1,49 @@
 <div class="carousel-wrapper">
-  <div class="carousel-viewport" #viewport>
+  <div class="title">
+    <h1>Get the highlights.</h1>
+  </div>
+
+  <div
+    class="carousel-viewport"
+    #viewport
+    appInView
+    (visibilityChange)="onVisibilityChange($event)"
+  >
     <ul class="slides-list">
-      <li class="card-item">
+      <li class="card-item" [class.active-slide]="currentIndex() === 0">
+        <div class="video-bg">
+          <video #videoPlayer muted playsinline preload="metadata">
+            <source src="assets/vedio/carousel/1li.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="text-content-1">
           <p>
             Brighter display, now with ProMotion up to 120Hz. Durable Ceramic
             Shield 2 front with 3x better scratch resistance.1
           </p>
         </div>
-        <div class="image-container">
-          <img src="assets/images/carousel/1.jpg" alt="Display" />
-        </div>
       </li>
 
-      <li class="card-item">
-        <div class="text-content-2">
+      <li class="card-item" [class.active-slide]="currentIndex() === 1">
+        <div class="video-bg">
+          <video #videoPlayer muted playsinline preload="metadata">
+            <source src="assets/vedio/carousel/2li.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="text-content-1 text-center">
           <p>
             New Center Stage front camera. Flexible ways to frame your shot.
             Smarter group selfies. And so much more.
           </p>
         </div>
-        <div class="image-container">
-          <img src="assets/images/carousel/2.jpg" alt="Camera" />
-        </div>
       </li>
 
-      <li class="card-item-3">
-        <div class="image-container-3">
+      <li class="card-item-3" [class.active-slide]="currentIndex() === 2">
+        <div class="image-container-3 slide-up-target">
           <img src="assets/images/carousel/3.png" alt="Dual Camera" />
         </div>
-        <div class="text-content-3">
+
+        <div class="text-content-1 text-center">
           <p>
             48MP Dual Fusion camera system. Superstunning shots up close and far
             away.
@@ -37,30 +51,35 @@
         </div>
       </li>
 
-      <li class="card-item">
-        <div class="text-content-2">
+      <li class="card-item" [class.active-slide]="currentIndex() === 3">
+        <div class="video-bg">
+          <video #videoPlayer muted playsinline preload="metadata">
+            <source src="assets/vedio/carousel/4li.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="text-content-1 text-center">
           <p>
             A19 chip. All-day battery life.2 Powers everything you love about
             iPhone.
           </p>
         </div>
-        <div class="image-container img-4">
-          <img src="assets/images/carousel/4.jpg" alt="Chip" />
-        </div>
       </li>
 
-      <li class="card-item">
-        <div class="text-content-2">
+      <li
+        class="card-item img-5-wrapper"
+        [class.active-slide]="currentIndex() === 4"
+      >
+        <div class="text-content-1 text-center">
           <p>iOS 26. New look.</p>
           <p>Even more magic.</p>
         </div>
-        <div class="image-container-3 img-5">
+        <div class="image-container-3 img-5 zoom-out-target">
           <img src="assets/images/carousel/5.png" alt="iOS" />
         </div>
       </li>
 
-      <li class="card-item ai-card">
-        <div class="text-content-center">
+      <li class="card-item ai-card" [class.active-slide]="currentIndex() === 5">
+        <div class="text-content-center text-center">
           <p>
             <span class="ai-title">Apple Intelligence.</span><br />
             Effortlessly helpful features — from image creation to Live
@@ -79,7 +98,7 @@
   </div>
 
   <div class="controls">
-    <ul class="indicators-list">
+    <ul class="indicators-list" [class.paused]="!isPlaying()">
       @for (slide of slides; track $index) {
       <li
         class="dot-item"
@@ -90,7 +109,10 @@
     </ul>
 
     <button class="play-pause-btn" (click)="togglePlay()">
-      <span>{{ isPlaying() ? "||" : "▶" }}</span>
+      <i
+        class="bi"
+        [ngClass]="isPlaying() ? 'bi-pause-fill' : 'bi-play-fill'"
+      ></i>
     </button>
   </div>
 </div>

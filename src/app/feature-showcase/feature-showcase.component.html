@@ -1,0 +1,61 @@
+<section class="container">
+  <div class="text-content-1 no-padding width">
+    <p><span class="main-title font-size">Even more delightful.</span></p>
+    <p><span class="main-title font-size">Even more durable.</span></p>
+    <p class="discription">
+      Meet the new iPhone 17. Designed with contoured edges, thinner borders,
+      and durable materials like Ceramic Shield 2 on the front, it <span class="text-black"> looks — and
+      stays — beautiful.</span> You can see and do more of everything you love on a
+      6.3-inch Super Retina XDR display.5 And enjoy<span class="text-black"> smoother scrolling and more
+      immersive gaming with ProMotion,</span> with an adaptive refresh rate up to
+      120Hz. Take it for a spin.
+    </p>
+  </div>
+  <div
+    class="main-feature-card rounded-xl-5 shadow-sm border"
+    [style.background-image]="'url(' + activeImage() + ')'"
+  >
+    <div class="row h-100 align-items-center custom-padding">
+      <div
+        appInView
+        (visibilityChange)="onVisibilityChange($event)"
+        [@buttonsEntrance]="areButtonsVisible() ? 'visible' : 'hidden'"
+        class="col-lg-5 col-md-7 col-sm-10 d-flex flex-column float-start align-content-center justify-content-center"
+      >
+        @for (item of features; track item.id) {
+          @if (activeFeature()?.id === item.id) {
+            <div @fadeSlide class="feature-content-box p-4 rounded-4 mb-3">
+              <span
+                class="badge bg-dark bg-opacity-10 text-dark rounded-pill px-2 py-2 mb-2"
+              >
+                {{ item.label }}
+              </span>
+              <p class="lead mb-2">{{ item.description }}</p>
+
+              @if (item.type === "color-picker") {
+                <div class="d-flex gap-2 mt-2">
+                  @for (color of item.colors; track $index) {
+                    <div
+                      class="color-circle"
+                      [class.active]="activeImage() === color.image"
+                      [style.background-color]="color.hex"
+                      (click)="selectColor(color.image)"
+                    ></div>
+                  }
+                </div>
+              }
+            </div>
+          } @else {
+            <button
+              (click)="selectFeature(item)"
+              class="btn feature-btn rounded-pill text-start px-3 py-2 border-0 d-flex align-items-center gap-2"
+            >
+              <i class="bi bi-plus-circle-fill fs-5 opacity-50"></i>
+              <span class="fw-medium">{{ item.label }}</span>
+            </button>
+          }
+        }
+      </div>
+    </div>
+  </div>
+</section>

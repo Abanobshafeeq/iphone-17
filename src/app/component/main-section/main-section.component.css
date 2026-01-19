@@ -1,4 +1,4 @@
-.hero {
+.main {
   height: 95vh;
   /* padding-top: 90px !important;  */
   margin: 40px 0px;
@@ -18,7 +18,7 @@ video {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
-.hero-video {
+.main-video {
   position: absolute !important;
   top: 0;
   right: 0;
@@ -28,11 +28,11 @@ video {
   border: 0;
 }
 
-.hero-content {
+.main-content {
   z-index: 5;
 }
 
-.hero-kicker {
+.main-kicker {
   font-size: 28px;
   line-height: 1.1428571429;
   font-weight: 600;
@@ -41,7 +41,7 @@ video {
   color: var(--main-text-color);
 }
 
-.hero-title {
+.main-title {
   display: inline-block;
   color: rgba(0, 0, 0, 0);
   background: linear-gradient(
@@ -60,11 +60,14 @@ video {
   background-clip: text;
   transition: background-position-x var(--frame-2-time) var(--frame-2-curve);
   font-size: 80px;
-  margin-top: 0;
+  margin: 0 0 16px;
+  line-height: 1.2353641176;
+  font-weight: 600;
+  letter-spacing: -0.022em;
 }
 .c-container {
   padding: 0px 134.4px;
-  padding-bottom: 3%;
+  padding-bottom: 6%;
   margin-top: 0;
 }
 
@@ -97,19 +100,19 @@ video {
   /* box-shadow: 0 8px 18px rgba(0,0,0,0.12); */
 }
 @media screen and (max-width: 1124px) {
-  .hero {
+  .main {
     display: flex;
     flex-direction: column;
     height: 100vh;
     padding: 60px 0;
   }
 
-  .hero-video {
+  .main-video {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
     width: 400px;
     height: 650px;
     object-fit: contain;
@@ -117,7 +120,7 @@ video {
     pointer-events: none;
   }
 
-  .hero-content {
+  .main-content {
     position: relative !important;
     z-index: 5;
     gap: 20px;
@@ -133,7 +136,7 @@ video {
     height: 100%;
   }
 
-  .hero-content .d-flex {
+  .main-content .d-flex {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -141,12 +144,12 @@ video {
     text-align: center;
   }
 
-  .hero-kicker {
+  .main-kicker {
     font-size: 21px;
     margin-bottom: 5px;
   }
 
-  .hero-title {
+  .main-title {
     font-size: 42px;
     line-height: 1.1;
   }
@@ -163,15 +166,14 @@ video {
   }
 }
 @media screen and (max-width: 1124px) and (min-width: 850px) {
-  .hero-video {
+  .main-video {
     width: 450px;
     height: 650px;
   }
-
 }
 
 @media screen and (max-width: 768px) {
-  .hero-video {
+  .main-video {
     padding-top: 100px !important;
   }
 }
