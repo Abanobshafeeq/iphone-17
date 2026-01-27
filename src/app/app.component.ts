@@ -5,11 +5,12 @@ import { MainSectionComponent } from "./component/main-section/main-section.comp
 import { SubNavComponent } from "./component/sub-nav/sub-nav.component";
 import { AppleCarouselComponent } from "./component/apple-carousel/apple-carousel.component";
 import { FeatureShowcaseComponent } from "./feature-showcase/feature-showcase.component";
+import { PropertiesIphoneComponent } from "./component/properties-iphone/properties-iphone.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent, MainSectionComponent, SubNavComponent, AppleCarouselComponent, FeatureShowcaseComponent],
+  imports: [RouterOutlet, NavComponent, MainSectionComponent, SubNavComponent, AppleCarouselComponent, FeatureShowcaseComponent, PropertiesIphoneComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

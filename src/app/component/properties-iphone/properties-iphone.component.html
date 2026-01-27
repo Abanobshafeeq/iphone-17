@@ -1,0 +1,40 @@
+<div class="showcase-container">
+  <div class="phone-container">
+    <img
+      src="../../../assets/images/properties-iphone/1.png"
+      class="phone-frame"
+      alt="Phone Frame"
+    />
+
+    <div class="screen-content">
+      <img
+        [src]="activeFeature.image"
+        alt="Feature Preview"
+        class="screen-image"
+      />
+    </div>
+  </div>
+
+<div class="controls-row">
+  <div class="active-indicator" 
+       [style.left.px]="indicatorPosition"
+       [style.width.px]="indicatorWidth">
+  </div>
+
+  <button
+    *ngFor="let item of features"
+    #activeBtn
+    [attr.id]="activeFeature.id === item.id ? 'active' : null"
+    (click)="setActive(item, $event)"
+    [class.active]="activeFeature.id === item.id"
+    class="control-btn"
+  >
+    <i class="bi {{item.icon}}"></i>
+    <span class="label">{{ item.title }}</span>
+  </button>
+</div>
+
+  <div class="description-area">
+    <p>{{ activeFeature.description }}</p>
+  </div>
+</div>
